@@ -8,12 +8,12 @@ public class Timer {
         int nanoseconds = (int) (duration) % 60;
         int milliseconds = (int) (duration / 1000000) % 60;
         int seconds = (int) (duration / 1000000000) % 60;
-        //int minutes = (int) ((duration / (1000000000 * 60)) % 60);
+        //int minutes = (int) ((duration / (1000000000 * 60)) % 60); //Overflow!!!!????
         //int hours = (int) ((duration / (1000000000 * 60 * 60)) % 24);
 
         System.out.println(
-                String.format("Elapsed - %d min, %d sec, %d millisec, %d nanosec",
-                        0, seconds, milliseconds, nanoseconds
+                String.format("Elapsed - %d min (not operate - always 0), %d sec, %d millisec, %d nanosec",
+                0, seconds, milliseconds, nanoseconds
                 ));
 
     }

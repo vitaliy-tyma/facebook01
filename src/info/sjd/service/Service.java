@@ -37,23 +37,29 @@ public class Service {
         if (a.length < 2) return;
 
         buy = a[0];
+        System.out.println("Buy = " + buy);
 
         for (int i = 1; i < a.length; i++){
+            System.out.println("a[i] = " + a[i]);
 
             if (buy <= a[i]){
                 if (profit < a[i] - buy) {
                     sell = a[i];
-//                    System.out.print("Sell = a[i] " + a[i]);
+                    System.out.print("Sell = a[i] = " + a[i] + " [profit < a[i] - buy]");
+                } else {
+                    System.out.print("Skip sell " + a[i] + " [profit >= a[i] - buy]");
                 }
             } else {
                 if (profit < sell - a[i]) {
                     buy = a[i];
-//                    System.out.print("Buy = a[i] " + a[i]);
+                    System.out.print("Buy = a[i] = " + a[i] + " [profit < sell - a[i]]");
+                } else {
+                    System.out.print("Profit > sell - a[i] = " + a[i] + " [profit >= sell - a[i]]");
                 }
             }
             resultIsFound = true;
             profit = sell - buy;
-//            System.out.println(String.format(". Profit (%d - %d) = %d", sell, buy, profit));
+            System.out.println(String.format(". Profit (%d - %d) = %d", sell, buy, profit));
         }
 
 

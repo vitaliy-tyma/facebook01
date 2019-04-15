@@ -1,9 +1,7 @@
 package info.sjd;
 
-import info.sjd.controlller.*;
+import info.sjd.controller.*;
 import info.sjd.service.Timer;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * This problem was asked by Facebook.
@@ -15,7 +13,7 @@ import java.util.concurrent.TimeUnit;
  * For example, given [9, 11, 8, 5, 7, 10],
  * you should return 5, since you could buy the stock
  * at 5 dollars and sell it at 10 dollars.
- * aa
+ *
  */
 
 public class AppRunner {
@@ -27,7 +25,7 @@ public class AppRunner {
         int[] a2 = {9,10,5,44,6,44,2,8,2};
         int[] a3 = {2,2,2,4};
 
-        Controller c = new Controller(a0);
+        Controller c = new Controller(true);
 
 //        c.setA(a0);
 //        c.start();
