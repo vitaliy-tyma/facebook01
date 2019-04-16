@@ -1,52 +1,46 @@
 package info.sjd.controller;
 
 import info.sjd.service.Service;
-import info.sjd.service.Timer;
+import info.sjd.util.Timer;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Arrays;
 
+@Slf4j
 public class Controller {
-    private int[] a;
-    private long startTime;
-    private long endTime;
-    private boolean showTimings = false;
 
     public Controller() {
     }
 
-    public Controller(boolean showTimings) {
-        this.showTimings = showTimings;
-    }
+    /** @author VTyma
+     * Main method to start calculation of the max profit!
+     */
+    public void start(int[] array, boolean showTimings) {
+        long startTime;
+        long endTime;
+        int profit;
 
-    public Controller(int[] a) {
-        this.a = a;
-    }
 
-    public void setA(int[] a) {
-        this.a = a;
-    }
-
-    public void start() {
-        System.out.println("Array is " + Arrays.toString(a));
-        System.out.println("************************************************");
-
+        log.info(String.format("Array is %s", Arrays.toString(array)));
         startTime = System.nanoTime();
 
         Service service = new Service();
-        service.getProfit(a);
+        try {
+            profit = service.getProfit(array);
+
+            log.info("************************************************");
+            log.info(String.format("Max profit is %d", profit));
+            log.info("************************************************");
+
+        } catch (Exception e) {
+            log.error(String.format("Error: [%s].", e.getMessage()));
+        }
 
         endTime = System.nanoTime();
 
-
-        if (service.getResultIsFound()) {
-            System.out.println("************************************************");
-            System.out.println(String.format("Max profit is %d", service.getProfit()));
-            System.out.println("************************************************");
-        } else {
-            System.out.println("Profit is not found.");
+        if (showTimings){
+            log.info(Timer.elapsed(startTime, endTime));
         }
-
-        if (showTimings) Timer.elapsed(startTime, endTime);
     }
 }
 

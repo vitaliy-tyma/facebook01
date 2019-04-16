@@ -1,9 +1,9 @@
 package info.sjd;
 
 import info.sjd.controller.*;
-import info.sjd.service.Timer;
+import info.sjd.util.RandomArray;
 
-/**
+/** @author VTyma
  * This problem was asked by Facebook.
  * <p>
  * Given a array of numbers representing the stock prices of a company in chronological order,
@@ -23,21 +23,19 @@ public class AppRunner {
         int[] a0 = {1, 2, 3, 4};
         int[] a1 = {9,10,11,12};
         int[] a2 = {9,10,5,44,6,44,2,8,2};
-        int[] a3 = {2,2,2,4};
+        int[] a3 = {9};
+        int[] a4 = {2,2,2,4};
 
-        Controller c = new Controller(true);
+        RandomArray rArray = new RandomArray();
+        int[] a5 = rArray.getRandomArray(10000, 10000);
 
-//        c.setA(a0);
-//        c.start();
-//
-//        c.setA(a1);
-//        c.start();
 
-        c.setA(a2);
-        c.start();
 
-//        c.setA(a3);
-//        c.start();
+        Controller c = new Controller();
+
+        c.start(a5, true);
+
+
 
     }
 

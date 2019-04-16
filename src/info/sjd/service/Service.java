@@ -1,69 +1,59 @@
 package info.sjd.service;
 
-import java.util.Random;
+import info.sjd.model.Result;
+import lombok.extern.slf4j.Slf4j;
+import java.util.Collections;
+import java.util.LinkedList;
 
+@Slf4j
 public class Service {
 
-    private boolean resultIsFound = false;
-    private int profit = 0;
-    private int buy;
-    private int sell;
-    //public int[] array;
+/** @author VTyma
+ * Method to calculate the max profit.
+ */
+    public int getProfit(int[] array) throws Exception {
+        if (array.length < 2) throw new Exception("Profit is not found (there is less then two elements in array)");
 
+        int arrayLength = array.length;
 
-    private int[] setRandomArray(int length, int limit){
+        Result result = new Result();
+        Result candidate = new Result();
 
-        int[] a = new int[length];
+        /* Set profit to 0 for the beginning*/
+        result.setProfit(0);
 
-        Random random = new Random();
-        for (int i = 0; i < length; i++){
-            a[i] = random.nextInt(limit);
-        }
-        return a;
-    }
-
-    public boolean getResultIsFound() {
-        return resultIsFound;
-    }
-
-    public int getProfit() {
-        return profit;
-    }
+        /* Convert array to the LinkedList to perform on it reducing operations.*/
+        LinkedList<Integer> arrayAsList = new LinkedList<>();
+        for(int i : array)
+            arrayAsList.add(i);
 
 
 
-    public void getProfit(int[] a){
+        for (int i = 0; i < arrayLength; i++) {
+            candidate.setIndex(i);
+            candidate.setValue(array[i]);
 
-        if (a.length < 2) return;
+            log.debug(String.format("Array[i] = %s",array[i]));
+            log.debug(String.format("Buy = %d", candidate.getValue()));
 
-        buy = a[0];
-        System.out.println("Buy = " + buy);
+            /* Shorten list for 1 element from the very beginning.*/
+            arrayAsList.removeFirst();
 
-        for (int i = 1; i < a.length; i++){
-            System.out.println("a[i] = " + a[i]);
-
-            if (buy <= a[i]){
-                if (profit < a[i] - buy) {
-                    sell = a[i];
-                    System.out.print("Sell = a[i] = " + a[i] + " [profit < a[i] - buy]");
-                } else {
-                    System.out.print("Skip sell " + a[i] + " [profit >= a[i] - buy]");
-                }
-            } else {
-                if (profit < sell - a[i]) {
-                    buy = a[i];
-                    System.out.print("Buy = a[i] = " + a[i] + " [profit < sell - a[i]]");
-                } else {
-                    System.out.print("Profit > sell - a[i] = " + a[i] + " [profit >= sell - a[i]]");
-                }
+            /* Get out of the cycle after emptying the list*/
+            if (arrayAsList.isEmpty()){
+                break;
             }
-            resultIsFound = true;
-            profit = sell - buy;
-            System.out.println(String.format(". Profit (%d - %d) = %d", sell, buy, profit));
+
+            candidate.setMaxForThisValue(Collections.max(arrayAsList));
+            candidate.setProfit(candidate.getMaxForThisValue() - candidate.getValue());
+
+            /* Select what is greater and set it to the result entity*/
+            if (result.getProfit() <= candidate.getProfit()){
+                result = (Result) candidate.clone();
+                candidate.reset();
+            }
         }
 
-
-        //return;
-
+        return result.getProfit();
     }
 }
