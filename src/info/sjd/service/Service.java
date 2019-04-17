@@ -5,12 +5,13 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.Collections;
 import java.util.LinkedList;
 
+/** @author VTyma
+ * Class to calculate the max profit - getProfit().
+ */
 @Slf4j
 public class Service {
 
-/** @author VTyma
- * Method to calculate the max profit.
- */
+
     public Result getProfit(int[] array) throws Exception {
         if (array.length < 2) throw new Exception("Profit is not found (there is less then two elements in array)");
 

@@ -37,7 +37,7 @@ public class AppRunner {
 
         Controller c = new Controller();
 
-        c.start(a2, SHOW_TIMINGS);
+        c.start(a5, SHOW_TIMINGS);
 
 
 

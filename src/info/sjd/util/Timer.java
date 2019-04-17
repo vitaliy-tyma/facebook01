@@ -12,11 +12,11 @@ public class Timer {
 
         double elapsedTimeInSecond = (double) duration / 1_000_000_000L;
 
-        return String.format("Elapsed - %f sec - " +
+        return String.format("Elapsed - %f sec [" +
                                 "%d min, " +
                                 "%d sec, " +
                                 "%d millisec, " +
-                                "%d nanosec",
+                                "%d nanosec]",
                 elapsedTimeInSecond,
                 minutes, seconds, milliseconds, nanoseconds);
 

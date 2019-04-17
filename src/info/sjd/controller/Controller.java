@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.Arrays;
 
 /** @author VTyma
- * Main method to start calculation of the max profit!
+ * Main class to start calculation of the max profit - start()!
  */
 
 @Slf4j
@@ -32,7 +32,7 @@ public class Controller {
 
         startTime = System.nanoTime();
 
-        Result result = new Result();
+        Result result;// = new Result();
 
         Service service = new Service();
         try {
