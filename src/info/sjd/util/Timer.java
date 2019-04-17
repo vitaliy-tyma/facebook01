@@ -6,15 +6,19 @@ public class Timer {
         long duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
 
         int nanoseconds = (int) (duration) % 60;
-        int milliseconds = (int) (duration / 1000000) % 60;
-        int seconds = (int) (duration / 1000000000) % 60;
-        //int minutes = (int) ((duration / (1000000000 * 60)) % 60); //Overflow!!!!????
-        //int hours = (int) ((duration / (1000000000 * 60 * 60)) % 24);
+        int milliseconds = (int) (duration / 1_000_000L) % 60;
+        int seconds = (int) (duration / 1_000_000_000L) % 60;
+        int minutes = (int) ((duration / (1_000_000_000L * 60)) % 60);
 
-        return String.format("Elapsed - " +
-                                //"%d min (not operate - always 0), " +
-                                "%d sec, %d millisec, %d nanosec",
-                0, seconds, milliseconds, nanoseconds);
+        double elapsedTimeInSecond = (double) duration / 1_000_000_000L;
+
+        return String.format("Elapsed - %f sec - " +
+                                "%d min, " +
+                                "%d sec, " +
+                                "%d millisec, " +
+                                "%d nanosec",
+                elapsedTimeInSecond,
+                minutes, seconds, milliseconds, nanoseconds);
 
     }
 }

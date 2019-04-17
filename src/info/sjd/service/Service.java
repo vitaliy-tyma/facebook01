@@ -11,7 +11,7 @@ public class Service {
 /** @author VTyma
  * Method to calculate the max profit.
  */
-    public int getProfit(int[] array) throws Exception {
+    public Result getProfit(int[] array) throws Exception {
         if (array.length < 2) throw new Exception("Profit is not found (there is less then two elements in array)");
 
         int arrayLength = array.length;
@@ -44,7 +44,10 @@ public class Service {
                 break;
             }
 
-            candidate.setMaxForThisValue(Collections.max(arrayAsList));
+            /* Find the max element!*/
+            int j = arrayAsList.indexOf(Collections.max(arrayAsList));
+            candidate.setMaxForThisValue(arrayAsList.get(j));
+            candidate.setMaxForThisIndex(j + i + 1);
             candidate.setProfit(candidate.getMaxForThisValue() - candidate.getValue());
 
             /* Select what is greater and set it to the result entity*/
@@ -54,6 +57,6 @@ public class Service {
             }
         }
 
-        return result.getProfit();
+        return result;
     }
 }
