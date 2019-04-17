@@ -18,6 +18,10 @@ import info.sjd.util.RandomArray;
 
 public class AppRunner {
     public static void main(String[] args) {
+        final boolean SHOW_TIMINGS = true;
+        final int LENGTH = 50000;
+        final int LIMIT = 1000001;
+
 
 
         int[] a0 = {1, 2, 3, 4};
@@ -27,13 +31,13 @@ public class AppRunner {
         int[] a4 = {2,2,2,4};
 
         RandomArray rArray = new RandomArray();
-        int[] a5 = rArray.getRandomArray(10000, 10000);
+        int[] a5 = rArray.getRandomArray(LENGTH, LIMIT);
 
 
 
         Controller c = new Controller();
 
-        c.start(a5, true);
+        c.start(a5, SHOW_TIMINGS);
 
 
 

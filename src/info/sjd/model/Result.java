@@ -1,10 +1,16 @@
 package info.sjd.model;
+
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Objects;
 
 @Getter
 @Setter
-//@AllArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class Result implements Cloneable {
     private int index;
     private int value;
@@ -25,6 +31,20 @@ public class Result implements Cloneable {
         return super.clone();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Result result = (Result) o;
+        return index == result.index &&
+                value == result.value &&
+                maxForThisValue == result.maxForThisValue &&
+                maxForThisIndex == result.maxForThisIndex &&
+                profit == result.profit;
+    }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(index, value, maxForThisValue, maxForThisIndex, profit);
+    }
 }
