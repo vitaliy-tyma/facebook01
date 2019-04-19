@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class RandomArray {
 
-    public int[] getRandomArray(int length, int limit) {
+    public static int[] getRandomArray(int length, int limit) {
         int[] a = new int[length];
 
         Random random = new Random();

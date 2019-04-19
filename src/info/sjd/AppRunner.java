@@ -19,7 +19,7 @@ import info.sjd.util.RandomArray;
 public class AppRunner {
     public static void main(String[] args) {
         final boolean SHOW_TIMINGS = true;
-        final int LENGTH = 50000;
+        final int LENGTH = 500;
         final int LIMIT = 1000001;
 
 
@@ -30,8 +30,7 @@ public class AppRunner {
         int[] a3 = {9};
         int[] a4 = {2,2,2,4};
 
-        RandomArray rArray = new RandomArray();
-        int[] a5 = rArray.getRandomArray(LENGTH, LIMIT);
+        int[] a5 = RandomArray.getRandomArray(LENGTH, LIMIT);
 
 
 
