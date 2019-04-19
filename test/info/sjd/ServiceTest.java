@@ -9,17 +9,20 @@ import org.junit.Test;
 @Slf4j
 public class ServiceTest {
 
+    private final String EXCEPTION_TO_EXAMPLE = "Profit is not found (there is less then two elements in array)";
+    private final String EXCEPTION_NULL = "";
+
     @Test
     public void testGetProfit1() {
 
         int[] arrayExample = {9,10,5,44,6,44,2,8,2};
 
-        Result resultExample = new Result(2,5, 44, 3, 39);
-//        resultExample.setValue(5);
-//        resultExample.setIndex(2);
-//        resultExample.setMaxForThisValue(44);
-//        resultExample.setMaxForThisIndex(3);
-//        resultExample.setProfit(39);
+        Result resultExample = new Result();
+        resultExample.setValue(5);
+        resultExample.setIndex(2);
+        resultExample.setMaxForThisValue(44);
+        resultExample.setMaxForThisIndex(3);
+        resultExample.setProfit(39);
 
         Result result = new Result();
         Service service = new Service();
@@ -33,16 +36,17 @@ public class ServiceTest {
     }
 
     @Test
-    public void testGetProfit2() throws Exception {
+    public void testGetProfit2() {
         int[] arrayExample = {9};
 
-        Result result = new Result();
         Service service = new Service();
         try {
-            result = service.getProfit(arrayExample);
-            Assert.fail("Expected custom Exception");
+            service.getProfit(arrayExample);
+            Assert.fail("Expected custom Exception. Test must fail for this testcase");
         } catch (Exception thrown) {
-            Assert.assertNotEquals("", thrown.getMessage());
+            Assert.assertNotNull(thrown.getMessage());
+            Assert.assertEquals(EXCEPTION_TO_EXAMPLE, thrown.getMessage());
+            Assert.assertNotEquals(EXCEPTION_NULL, thrown.getMessage());
         }
     }
 }
