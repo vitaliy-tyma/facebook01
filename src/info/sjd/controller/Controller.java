@@ -36,7 +36,7 @@ public class Controller {
 
 
         try {
-            result = Service .getProfit(array);
+            result = Service.getProfit(array);
 
             log.info("************************************************");
             log.info(String.format("Max profit is %d for elements #%d (buy at %d) and #%d (sell at %d)",
