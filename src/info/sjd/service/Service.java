@@ -12,7 +12,7 @@ import java.util.LinkedList;
 public class Service {
 
 
-    public Result getProfit(int[] array) throws Exception {
+    public static Result getProfit(int[] array) throws Exception {
         if (array.length < 2) throw new Exception("Profit is not found (there is less then two elements in array)");
 
         int arrayLength = array.length;

@@ -32,11 +32,11 @@ public class Controller {
 
         startTime = System.nanoTime();
 
-        Result result;// = new Result();
+        Result result;
 
-        Service service = new Service();
+
         try {
-            result = service.getProfit(array);
+            result = Service .getProfit(array);
 
             log.info("************************************************");
             log.info(String.format("Max profit is %d for elements #%d (buy at %d) and #%d (sell at %d)",
