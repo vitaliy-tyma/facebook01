@@ -4,8 +4,8 @@ import info.sjd.model.Result;
 import info.sjd.service.Service;
 import info.sjd.util.Timer;
 import lombok.extern.slf4j.Slf4j;
-
 import java.util.Arrays;
+
 
 /** @author VTyma
  * Main class to start calculation of the max profit - start()!
