@@ -14,10 +14,10 @@ import java.util.Arrays;
 @Slf4j
 public class Controller {
 
-    public Controller() {
-    }
+//    public Controller() {
+//    }
 
-    public void start(int[] array, boolean showTimings) {
+    public static void start(int[] array, boolean showTimings) {
         long startTime;
         long endTime;
         int profit;
